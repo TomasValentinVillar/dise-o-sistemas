@@ -1,0 +1,55 @@
+### Obtener todos los items (por defecto)
+GET http://127.0.0.1:8000/items/
+Accept: application/json
+
+### Obtener items con parámetros de consulta (Query Params)
+GET https://127.0.0.1:8000/items/?skip=1&limit=2
+Accept: application/json
+
+### Obtener item por ID (sin quiery param q)
+GET http://127.0.0.1:8000/items/abc
+Accept: application/json
+
+### Obtener item por ID (con quiery param q)
+GET http://127.0.0.1:8000/items/abc?q=hola
+Accept: application/json
+
+### Obtener item por ID (con espacios en q)
+GET http://127.0.0.1:8000/items/abc?q=hola%20mundo
+Accept: application/json
+
+### User item - sin quiery params (usa defaults)
+GET http://127.0.0.1:8000/users/7/items/abc
+Accept: application/json
+
+### User item - con quiery params
+GET http://127.0.0.1:8000/users/7/items/abc?q=hola
+Accept: application/json
+
+### User item - respuesta corta (short = true)
+GET http://127.0.0.1:8000/items/abc?short=true
+Accept: application/json
+
+### User item - con q y short=true
+GET http://127.0.0.1:8000/items/abc?q=hola&short=true
+Accept: application/json
+
+### User item - short con otras variables booleanas
+GET http://127.0.0.1:8000/users/7/items/abc?short=1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/7/items/abc?short=true
+Accept: application/json
+
+### Query  param requerido (needy) - OK
+GET http://127.0.0.1:8000/items1/abc?needy=si
+Accept: application/json
+
+### Query  param requerido (needy) - otro ejemplo
+GET http://127.0.0.1:8000/items1/abc?needy=pan
+Accept: application/json
+
+### Falta needy (debería dar 422 Unprocessable Entity)
+GET http://127.0.0.1:8000/items1/abc
+Accept: application/json
